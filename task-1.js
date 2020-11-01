@@ -25,6 +25,8 @@ function isModalOpen (evt) {
   modalImg.src = evt.target.dataset.source;
   modalImg.alt = evt.target.alt;
   // window.addEventListener('keydown', onKeyLeafDown);
+  window.addEventListener('keydown', toPreviousImage);
+  window.addEventListener('keydown', toNextImage);
 }
 
 function isModalClose () {
@@ -59,3 +61,34 @@ function downOnESC(evt) {
 //     modalImg.alt = rightNeighbor.alt;
 //   };
 // };
+
+
+function toPreviousImage(evt) {
+  if (evt.code !== "ArrowLeft") {
+    return;
+  }
+  let index = pictures.findIndex((el) => {
+    return el.original === modalImg.getAttribute("src");
+  });
+  if (index === 0) {
+    index = pictures.length;
+  }
+  index -= 1;
+  const toPreviousImage = pictures[index].original;
+  modalImg.setAttribute("src", toPreviousImage);
+};
+
+function toNextImage (evt) {
+  if (evt.code !== "ArrowRight") {
+    return;
+  }
+  let index = pictures.findIndex((el) => {
+    return el.original === modalImg.getAttribute("src");
+  });
+  if (index === pictures.length) {
+    index = 0;
+  }
+  index += 1;
+  const toNextImage = pictures[index].original;
+  modalImg.setAttribute("src", toNextImage);
+};
