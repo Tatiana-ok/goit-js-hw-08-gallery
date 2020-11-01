@@ -85,10 +85,10 @@ function toNextImage (evt) {
   let index = pictures.findIndex((el) => {
     return el.original === modalImg.getAttribute("src");
   });
-  if (index === pictures.length) {
-    index = 0;
-  }
   index += 1;
+  if (index == pictures.length) {
+    index = 0;
+  };
   const toNextImage = pictures[index].original;
   modalImg.setAttribute("src", toNextImage);
 };
