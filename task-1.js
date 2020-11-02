@@ -39,28 +39,15 @@ function clickOnBackdrop (evt) {
   if (evt.target.nodeName !== 'DIV') {
     return;
   };
-  modal.classList.remove('is-open');
-  modalImg.src = '';
-  modalImg.alt = '';
+  isModalClose ();
 };
 
 function downOnESC(evt) {
   if (evt.code !== 'Escape') {
     return;
   };
-  modal.classList.remove('is-open');
-  modalImg.src = '';
-  modalImg.alt = '';
+  isModalClose ();
 };
-
-// function onKeyLeafDown(evt) {
-//   if (evt.code == 'ArrowRight') {
-//     const rightNeighbor =  gallery.childNodes.nextSibling;
-//     console.log(gallery.childNodes.nextSibling);
-//     modalImg.src = rightNeighbor.dataset.source;
-//     modalImg.alt = rightNeighbor.alt;
-//   };
-// };
 
 
 function toPreviousImage(evt) {
@@ -83,7 +70,7 @@ function toNextImage (evt) {
     return;
   }
   let index = pictures.findIndex((el) => {
-    return el.original === modalImg.getAttribute("src");
+    return el.original === modalImg.getAttribute("src");``
   });
   index += 1;
   if (index == pictures.length) {
